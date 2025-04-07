@@ -1,0 +1,67 @@
+/* Styles personnalisés pour Mangathèque */
+
+/* Styles généraux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Styles spécifiques pour les cartes manga */
+.card {
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.card-title {
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Style pour la page de détail du manga */
+.manga-detail {
+    padding: 20px;
+}
+
+/* Style pour la barre de navigation */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style pour les boutons */
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    margin: 5px;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
+}
+
+/* Style pour le carousel */
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Style pour les formulaires */
+input[type="text"], input[type="password"], input[type="email"] {
+    border-radius: 0;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+}
+
+/* Style pour le footer */
+footer {
+    background-color: #343a40;
+    color: white;
+    padding: 20px 0;
+    margin-top: 30px;
+}

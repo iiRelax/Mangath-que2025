@@ -1,0 +1,88 @@
+<html>
+    <head>
+  <title>Formulaire d'aide Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- STYLES -->
+        <!-- datatable -->
+        <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css"/>
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+          </head>
+    <body>
+    <header>
+            <?php
+            include_once 'navbarAdmin.php';
+            ?>
+        </header>
+    <div class="container mt-3 text-center">
+    <h2>Aperçu des requêtes</h2>
+    <table class="datatable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Sujet</th>
+          <th>Description problème</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        foreach ($hPAdmin as $key => $hp) {
+          echo '<tr><td>' . $hp->id . '</td>';
+          echo '<td>' . $hp->email . '</td>';
+          echo '<td>' . $hp->sujet . '</td>';
+          echo '<td>' . $hp->requete . '</td>';
+          echo '<td><a data-bs-toggle="modal" data-bs-target="#del'.$hp->id.'" class="btn btn-danger">Delete</a></td></tr>';
+        }
+        ?>
+        
+  </tbody>
+  </table>
+  <?php
+  foreach ($hPAdmin as $key => $hp) {
+    echo '<div class="modal fade" id="del'.$hp->id.'" tabindex="-1">';
+    echo '<div class="modal-dialog">';
+    echo '<div class="modal-content">';
+    echo '<div class="modal-header">';
+    echo '<h5 class="modal-title">Êtes-vous sûrs de vouloir supprimer cette ligne?</h5>';
+    echo '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
+    echo '</div>';
+    echo '<div class="modal-body">';
+    echo '</div>';
+    echo '<div class="modal-footer">';
+   echo '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>';
+    echo '<form action="'.base_url().'/Admin/deleteHP" method="POST">';
+  echo '<input type="hidden" name="id" value="'.$hp->id.'" />';
+  echo '<button type="submit" class="btn btn-danger">Delete</button>';
+   echo '</form>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+  }
+  ?>
+  </div>
+    
+        <footer>
+            <div class="environment">
+
+                <?php
+            include_once 'footerAdmin.php';
+            ?>
+
+            </div>
+
+
+        </footer>
+        <script>
+          $(document).ready( function () {
+    $('.datatable').DataTable();
+} );
+          </script>
+    </body>
+</html>
